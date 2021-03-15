@@ -20,10 +20,12 @@
                     <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Categories</a>
                     </li>
+
                     <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Movie" ? "active" : "")">
-                        <a class="nav-link" asp-controller="Movie" asp-action="Movie">Available Movies</a>
+                        <a class="nav-link" asp-controller="Movie" asp-action="Movie">Movie</a>
                     </li>
-                    <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "")">
+
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "MyMovies" ? "active" : "")">
                         <a class="nav-link" asp-controller="Booking" asp-action="MyMovies">My Movies</a>
                     </li>
                 </ul>

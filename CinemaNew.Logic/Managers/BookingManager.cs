@@ -33,6 +33,21 @@ namespace CinemaNew.Logic.Managers
 
             return null;
         }
-       
+        public string CreateBooking(string name)
+        {
+            using (var db = new CinemaNewDB())
+            {
+                db.UserBookings.Add(new UserBookings()
+                {
+                    Name = name,
+
+                });
+
+                db.SaveChanges();
+
+            }
+            return null;
+        }
+
     }
 }

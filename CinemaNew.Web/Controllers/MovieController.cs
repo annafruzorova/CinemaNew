@@ -12,21 +12,27 @@ namespace CinemaNew.Web.Controllers
     {
         private MovieManager movie = new MovieManager();
         private CategoryManager category = new CategoryManager();
+        private BookingManager booking = new BookingManager();
        
-            public IActionResult Movie (int? id)
+            public IActionResult AllMovie (int? id)
             {
-                MoviesModel model = new MoviesModel();
-                model.Movies = movie.GetAllMovies();
-                if (id.HasValue)
-                {
+            var allMovies = new MoviesModel()
+            {
+                Category = category.GetAllCategories()
+            };
 
-                    model.ActiveMovies = movie.GetMovies(id.Value);
-
-                    model.Movies = movie.GetByCategory(id.Value);
-                }
-
-                return View(model);
+            if (id.HasValue)
+            {
+                allMovies.ActiveCategory = category.GetCategory(id.Value);
+                allMovies.Movies = movie.GetByCategory(id.Value);
             }
+            else
+            {
+                allMovies.Movies = movie.GetAllMovies();
+            };
+
+            return View(allMovies);
+        }
 
         public IActionResult Movie ()
         {
@@ -34,13 +40,8 @@ namespace CinemaNew.Web.Controllers
             return View(data);
         }
 
-        public IActionResult Create(string name)
-        {
-            movie.CreateBooking(name);
-
-            return RedirectToAction(nameof(Movie));
-        }
+      
 
     }
-    }
+}
 

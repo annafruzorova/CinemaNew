@@ -27,26 +27,26 @@ namespace CinemaNew.Web.Controllers
             return View(bookings);
         }
 
-        //public IActionResult Create(BookingModel model)
-        //{
+        public IActionResult Create(BookingModel model)
+        {
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        var result = booking.CreateBooking(model.UserBookings);
-        //        if (String.IsNullOrEmpty(result))
-        //        {
-        //            return RedirectToAction("Category", "Movies");
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("validation", result);
-        //        }
-        //    }
+            if (ModelState.IsValid)
+            {
+                var result = booking.CreateBooking(model.Name);
+                if (String.IsNullOrEmpty(result))
+                {
+                    return RedirectToAction("Category", "Movies");
+                }
+                else
+                {
+                    ModelState.AddModelError("validation", result);
+                }
+            }
 
-        //    return View(model);
-        //}
+            return View(model);
+        }
 
-      
+
 
         public IActionResult Cancel(string name)
         {

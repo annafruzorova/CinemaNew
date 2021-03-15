@@ -1,6 +1,7 @@
 ﻿using CinemaNew.Logic.DB;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,5 +17,11 @@ namespace CinemaNew.Web.Models
         public Movies ActiveMovies { get; set; }
 
         public Category ActiveCategory { get; set; }
+
+        [Required]
+        [Display(Name = "Movie name")]
+        public string Name { get; set; }
+
+
     }
 }

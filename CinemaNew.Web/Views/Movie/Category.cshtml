@@ -1,16 +1,14 @@
-﻿@model MoviesModel
+﻿@model CategoryModel
 
-<ul class="nav nav-tabs bg-light">
+<ul class="nav nav-pills mb-3">
     @foreach (var category in Model.Category)
     {
         <li class="nav-item">
-            <a class="nav-link" asp-controller="Movie" asp-action="AllMovie" asp-route-id="@category.Id">
-                @category.Name 
-            </a>
+            <a class="nav-link" asp-controller="Movie" asp-action="Category" asp-route-id="@category.Id"> @category.Name </a>
         </li>
     }
 </ul>
-<br />
+
 @if (Model.ActiveCategory != null)
 {
     <nav aria-label="breadcrumb">
@@ -19,22 +17,20 @@
         </ol>
     </nav>
 }
-<br />
-<div class="row">
-    @foreach (var movie in Model.Movies)
-    {
-        <div class="col-lg-6">
-            <div class="card bg-light text-dark">
-                <br />
-                <a asp-controller="Movie" asp-action="Movie" asp-route-id="@movie.Id">
-                    <img src="" height="100" class="mx-auto d-block" alt="...">
-                </a>
-                <div class="card-body">
-                    <a asp-controller="Movie" asp-action="Movie" asp-route-id="@movie.Id">
-                        <h6 class="card-title text-center text-dark">@movie.Name </h6>
-                    </a>
+
+@if (Model.Movies != null)
+{
+    <div class="row">
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="col-md-4 col-sm-12 mb-3">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <a class="card-link" asp-controller="Movie" asp-action="Movie" asp-route-id="@movie.Id">@movie.Name</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}

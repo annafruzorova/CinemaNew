@@ -23,6 +23,8 @@ namespace CinemaNew.Logic.Managers
                 return db.Movies.FirstOrDefault(m => m.Id == id);
             }
         }
+
+      
         public List<Movies> GetByCategory(int categoryId)
         {
             using (var db = new CinemaNewDB())

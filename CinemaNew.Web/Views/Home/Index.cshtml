@@ -6,11 +6,17 @@
     </ol>
 </nav>
 <div class="row">
+
     @foreach (var category in Model)
     {
-        <div class="nav-item">
-            <a class="nav-link" href="#">@category.Name </a>
-        </div>
-    }
-</div>
+        <div class="col-md-4 col-sm-12 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <a class="card-link" asp-controller="Movie" asp-action="Category" asp-route-id="@category.Id">@category.Name</a>
+                </div>
+                </div>
+            </div>
+                }
+            </div>
+
 
